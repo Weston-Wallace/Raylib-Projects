@@ -1,24 +1,3 @@
-/*******************************************************************************************
-*
-*   raylib [core] example - Basic window
-*
-*   Welcome to raylib!
-*
-*   To test examples, just press F6 and execute raylib_compile_execute script
-*   Note that compiled executable is placed in the same folder as .c file
-*
-*   You can find all basic examples on C:\raylib\raylib\examples folder or
-*   raylib official webpage: www.raylib.com
-*
-*   Enjoy using raylib. :)
-*
-*   This example has been created using raylib 1.0 (www.raylib.com)
-*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-*
-*   Copyright (c) 2013-2016 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
-
 #include "raylib.h"
 #include <vector>
 #include <fstream>
@@ -41,9 +20,9 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "Neural Network Visualizer");
 
-    SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));               // Set our game to run at 60 frames-per-second
+    SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
 
-    vector<int> shape({2, 8, 4, 10});
+    vector<int> shape({2, 16, 8, 10});
     int x_offset = networkWidth / (shape.size() + 1);
     vector<int> y_offsets(shape.size());
     for (int i = 0; i < shape.size(); i++) {
@@ -87,7 +66,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
 
     // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose())
     {
         // Update
         //----------------------------------------------------------------------------------
@@ -101,7 +80,7 @@ int main(void)
             ClearBackground(DARKGRAY);
 
             for (int i = 0; i < linePos.size(); i++) {
-                DrawLineEx(linePos[i][0], linePos[i][1], 2, LIGHTGRAY);
+                DrawLineV(linePos[i][0], linePos[i][1], LIGHTGRAY);
             }
             for (int i = 0; i < circlePos.size(); i++) {
                 DrawCircle(circlePos[i].x, circlePos[i].y, circleSize[i], GRAY);
@@ -115,7 +94,7 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    CloseWindow();        // Close window and OpenGL context
+    CloseWindow();
     //--------------------------------------------------------------------------------------
 
     return 0;
