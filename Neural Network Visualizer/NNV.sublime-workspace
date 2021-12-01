@@ -1,0 +1,251 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"scre",
+				"screenHeight"
+			],
+			[
+				"netwo",
+				"networkHeight"
+			],
+			[
+				"ci",
+				"circleSize"
+			],
+			[
+				"s_heigh",
+				"s_height_"
+			],
+			[
+				"W",
+				"W_TEXTURE"
+			],
+			[
+				"WSU",
+				"WSurface"
+			],
+			[
+				"sc",
+				"screen_width"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remove package",
+				"Package Control: Remove Package"
+			],
+			[
+				"package list",
+				"Package Control: List Packages"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"package remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: di",
+				"Package Control: Discover Packages"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/User/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/NNV.sublime-project",
+		"/C/Users/Weston/Desktop/Coding/Minecraft Modding/MCP/jars/server.properties",
+		"/C/Users/Weston/Desktop/Coding/Minecraft Modding/MCP/jars/servers.dat",
+		"/C/ProgramData/NVIDIA Corporation/CUDA Samples/v11.4/6_Advanced/newdelete/newdelete.cu",
+		"/C/msys64/mingw64/include/c++/10.2.0/bits/stl_vector.h",
+		"/C/msys64/mingw64/include/c++/10.2.0/vector",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/src/Graph.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/SDL2 With Sublime Text.sublime-project",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/include/Graph.h",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/Example SDL2 With Sublime Text/08_geometry_rendering/08_geometry_rendering.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/src/output1.txt",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/src/output2.txt",
+		"/C/Users/Weston/Desktop/Coding/SDL_setup/freetype-2.11.0/Makefile",
+		"/C/Users/Weston/Desktop/Coding/SDL_setup/SDL2_ttf-2.0.15/Makefile",
+		"/C/Users/Weston/Desktop/Coding/SDL_setup/freetype-2.11.0/README",
+		"/C/Users/Weston/AppData/Local/Temp/Temp1_07_texture_loading_and_rendering.zip/07_texture_loading_and_rendering/07_texture_loading_and_rendering.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/src/a.exe",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/kattis/All Pairs Shortest Path/src/test.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/07_texture_loading_and_rendering.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/06_extension_libraries_and_loading_other_image_formats.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/05_optimized_surface_loading_and_soft_stretching.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/04_key_presses.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/03_event_driven_programming.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/02_getting_an_image_on_the_screen.cpp",
+		"/C/Users/Weston/Desktop/Coding/Baylor Programming/SDL2 With Sublime Text/src/main.cpp",
+		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/Default/exec.py"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";\n",
+			"1080",
+			"slime",
+			"fonts",
+			");\n",
+			"loadMedia",
+			"gWindow",
+			"close",
+			"free",
+			"_M_impl",
+			"PNG",
+			">\n",
+			"cin",
+			"INT_MIN",
+			".val",
+			";\n",
+			"self.quiet",
+			"finish"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ss",
+			""
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 150.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Build Debug",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 181.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

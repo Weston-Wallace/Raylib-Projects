@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "src/..",
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "Build Debug",
+			"selector": "source.c++",
+			"working_dir": "$project_path",
+			"shell_cmd": "g++ src/main.cpp -o bin/debug/main.exe -O1 -g -Wall -std=c++11 -I include -L lib -lraylib -lopengl32 -lgdi32 -lwinmm && start bin/debug/main.exe"
+		}
+	]
+}
