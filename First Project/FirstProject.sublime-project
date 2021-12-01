@@ -3,6 +3,7 @@
 	[
 		{
 			"path": "src/..",
+			"file_exclude_patterns": ["*.o"]
 		}
 	],
 	"build_systems":
@@ -11,7 +12,7 @@
 			"name": "Build Debug",
 			"selector": "source.c++",
 			"working_dir": "$project_path",
-			"shell_cmd": "g++ src/main.cpp -o bin/debug/main -O1 -g -Wall -std=c++11 -I include -L lib -lraylib -lopengl32 -lgdi32 -lwinmm && start bin/debug/main"
+			"shell_cmd": "g++ -c src/*.cpp -g -Wall -m64 -std=c++11 -I include && g++ *.o -o bin/debug/main -L lib -lraylib -lopengl32 -lgdi32 -lwinmm && start bin/debug/main"
 		}
 	]
 }

@@ -45,6 +45,26 @@
 		"selected_items":
 		[
 			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add cu",
+				"Git: Add Current File"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"package control: install package",
+				"Package Control: Install Package"
+			],
+			[
 				"remove package",
 				"Package Control: Remove Package"
 			],
@@ -105,9 +125,10 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/NNV.sublime-project",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/.gitignore",
 		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
 		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/User/SublimeCodeIntel.sublime-settings",
-		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/NNV.sublime-project",
 		"/C/Users/Weston/Desktop/Coding/Minecraft Modding/MCP/jars/server.properties",
 		"/C/Users/Weston/Desktop/Coding/Minecraft Modding/MCP/jars/servers.dat",
 		"/C/ProgramData/NVIDIA Corporation/CUDA Samples/v11.4/6_Advanced/newdelete/newdelete.cu",
@@ -202,6 +223,10 @@
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 150.0
 	},
 	"pinned_build_system": "Build Debug",
 	"replace":
