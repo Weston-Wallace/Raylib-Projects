@@ -52,9 +52,6 @@ int main(void)
                 int endIndex = sum(vector<int>(shape.begin(), shape.begin() + i + 1)) + k;
                 linePos[index][0] = circlePos[startIndex];
                 linePos[index][1] = circlePos[endIndex];
-                cout << "index: " << index << endl;
-                cout << "startIndex: " << startIndex << endl;
-                cout << "endIndex: " << endIndex << endl;
             }
         }
     }
