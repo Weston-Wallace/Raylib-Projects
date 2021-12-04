@@ -12,7 +12,13 @@
 			"name": "Build Debug",
 			"selector": "source.c++",
 			"working_dir": "$project_path",
-			"shell_cmd": "g++ -c src/*.cpp -g -Wall -m64 -std=c++11 -I include && g++ *.o -o bin/debug/main -L lib -lraylib -lopengl32 -lgdi32 -lwinmm && start bin/debug/main"
+			"shell_cmd": "g++ -c src/*.cpp -g -m64 -std=c++11 -I include && g++ *.o -o bin/debug/main -L lib -lprofiler -lraylib -lopengl32 -lgdi32 -lwinmm && start bin/debug/main"
+		},
+		{
+			"name": "test",
+			"selector": "source.c++",
+			"working_dir": "$project_path",
+			"shell_cmd": "g++ -c bin/test/test.cpp -o bin/test/test.o -g -m64 -std=c++11 && g++ bin/test/test.o -o bin/test/test && start bin/test/test"
 		}
 	]
 }

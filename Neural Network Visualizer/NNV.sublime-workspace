@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"Butt",
+				"Button"
+			],
+			[
+				"sc",
+				"screenHeight"
+			],
+			[
+				"butt",
+				"buttonRects"
+			],
+			[
 				"scre",
 				"screenHeight"
 			],
@@ -26,10 +38,6 @@
 			[
 				"WSU",
 				"WSurface"
-			],
-			[
-				"sc",
-				"screen_width"
 			]
 		]
 	},
@@ -50,7 +58,11 @@
 			],
 			[
 				"git commit",
-				"Git: Commit"
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"git diff",
+				"Git: Diff All Files"
 			],
 			[
 				"git add cu",
@@ -125,6 +137,13 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/include/Profiler.h",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/include/matrixl.h",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/res/t10k-images.idx3-ubyte",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/bin/debug/test.exe",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/src/profiler.cpp",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/include/include/MNumber.h",
+		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/include/matrix.h",
 		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/Neural Network Visualizer/NNV.sublime-project",
 		"/C/Users/Weston/Desktop/Coding/Raylib/Projects/.gitignore",
 		"/C/Users/Weston/AppData/Roaming/Sublime Text/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
@@ -157,7 +176,7 @@
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 65.0
 	},
 	"find_in_files":
 	{
@@ -171,6 +190,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			");\n",
+			"rectangle",
+			"Matrix",
 			";\n",
 			"1080",
 			"slime",
@@ -196,6 +218,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			";\n",
 			"ss",
 			""
 		],
@@ -209,16 +232,16 @@
 	},
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 32.0
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 44.0
 	},
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 150.0
+		"height": 277.0
 	},
 	"output.find_results":
 	{
@@ -231,7 +254,7 @@
 	"pinned_build_system": "Build Debug",
 	"replace":
 	{
-		"height": 58.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -268,7 +291,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 181.0,
+	"side_bar_width": 217.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
