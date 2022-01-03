@@ -17,8 +17,8 @@
 		{
 			"name": "test",
 			"selector": "source.c++",
-			"working_dir": "$project_path",
-			"shell_cmd": "g++ -c bin/test/test.cpp -o bin/test/test.o -g -m64 -std=c++11 && g++ bin/test/test.o -o bin/test/test && start bin/test/test"
+			"working_dir": "$project_path/bin/test",
+			"shell_cmd": "g++ -c test.cpp ../../src/network.cpp -g -m64 -std=c++11 -I ../../include && g++ *.o -o test && start test"
 		}
 	]
 }

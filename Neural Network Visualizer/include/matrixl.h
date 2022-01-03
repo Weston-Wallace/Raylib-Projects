@@ -49,6 +49,7 @@ public:
     MatrixL<T>& reshape(const std::vector<size_t>& shape) const;
     MatrixL<T>& reshape_in_place(const std::vector<size_t> &shape);
     MatrixL<T>& flat() const;
+    T& flatAt(size_t index);
     MatrixL<T>& transpose() const;
 
     MatrixL<T>& operator+(const T& addend) const;
@@ -384,6 +385,14 @@ MatrixL<T>& MatrixL<T>::flat() const {
 }
 
 template<typename T>
+T& MatrixL<T>::flatAt(size_t index) {
+    if (index > capacity) {
+        throw std::length_error("index out of bounds");
+    }
+    return values[index];
+}
+
+template<typename T>
 MatrixL<T>& MatrixL<T>::transpose() const {
     MatrixL<T> *transposed_mat;
     if (dimensions_ > 1) {
@@ -614,12 +623,12 @@ MatrixL<T>& MatrixL<T>::reg_matmul(const MatrixL<T>& that) const {
         throw std::length_error("Cannot matmul matrices where lengths do not follow standard matmul rules");
     }
     auto* ret_mat = new MatrixL<T>({this->shape_[0], that.shape_[1]});
-    int sum;
+    T sum;
     for (size_t i = 0; i < this->shape_[0]; i++) {
         for (size_t j = 0; j < that.shape_[1]; j++) {
             sum = 0;
             for (size_t k = 0; k < this->shape_[1]; k++) {
-                sum += this->at({i, k}).values[0] * that.at({k, j}).values[0];
+                sum = sum + this->at({i, k}).values[0] * that.at({k, j}).values[0];
             }
             ret_mat->at({i, j}) = sum;
         }
@@ -693,6 +702,13 @@ void MatrixL<T>::update_offsets_and_capacity() {
     offsets[dimensions_ - 1] = shape_[dimensions_ - 1];
     for (int i = dimensions_ - 2; i >= 0; i--) {
         offsets[i] = offsets[i + 1] * shape_[i];
+    }
+    if (capacity > offsets[0]) {
+        T *new_vals = new T[offsets[0]];
+        for (int i = 0; i < capacity; i++) {
+            new_vals[i] = values[i];
+        }
+        delete[] values;
     }
     capacity = offsets[0];
 }

@@ -1,17 +1,21 @@
 #include "raylib.h"
 #include "matrixl.h"
 #include "MNumber.h"
+#include "network.h"
 #include <Profiler.h>
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <cassert>
+#include <random>
+#include <functional>
 
 using namespace std;
 
 //----------------------------------------------------------------------------------------
 // Typedef and Structures Definition
 //----------------------------------------------------------------------------------------
+
 typedef struct Node {
     Vector2 position;
     int radius;
@@ -38,10 +42,16 @@ typedef struct Button {
 //----------------------------------------------------------------------------------------
 // Helper Function Declarations
 //----------------------------------------------------------------------------------------
+
 int min(int val1, int val2);
+void createLines(const Network &n, Line *lines, Node *nodes);
+void createNodes(const Network &n, Node *nodes, int networkWidth, int networkHeight);
+void createShownNetwork(Network &sn, const Network &an, const MNumbers &nums, Line *lines, Node *nodes, int networkWidth, int networkHeight);
+
 //----------------------------------------------------------------------------------------
 // Global Variables
 //----------------------------------------------------------------------------------------
+
 const int screenWidth = 1920;
 const int screenHeight = 1080;
 const int networkWidth = screenWidth / 2;
@@ -56,40 +66,19 @@ int main(void)
 
     SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
 
-    MatrixL<int> shape({4});
-    shape = {2, 16, 8, 10};
-    int x_offset = networkWidth / (shape.length() + 1);
-    int y_offsets[shape.length()];
-    for (int i = 0; i < shape.length(); i++) {
-        y_offsets[i] = networkHeight / (shape[i].val() + 1);
-    }
-    Node node[shape.sum()];
-    int index = 0;
-    for (int i = 0; i < shape.length(); ++i) {
-        for (int j = 1; j <= shape[i].val(); j++, index++) {
-            node[index].position = (Vector2) { (i + 1) * x_offset, y_offsets[i] * j };
-            node[index].radius = (min(x_offset, y_offsets[i]) * 2) / 5;
-            node[index].value = GRAY;
-        }
-    }
+    Network actualNetwork({784, 16, 8, 10});
+    MNumbers nums("res/t10k-images.idx3-ubyte", numberBase);
+    nums.load(0);
+    actualNetwork.forward((float*)nums.values);
+    Network shownNetwork({10, 16, 8, 10});
+    Node node[shownNetwork.shape().sum()];
+    createNodes(shownNetwork, node, networkWidth, networkHeight);
     int lines = 0;
-    for (int i = 0; i < shape.length() - 1; i++) {
-        lines += shape[i].val() * shape[i + 1].val();
+    for (int i = 0; i < shownNetwork.shape().length() - 1; i++) {
+        lines += shownNetwork.shape()[i].val() * shownNetwork.shape()[i + 1].val();
     }
     Line line[lines];
-    int startSum = 0, endSum = 0;
-    index = 0;
-    for (int i = 0; i < shape.length() - 1; i++) {
-        endSum += shape[i].val();
-        for (int j = 0; j < shape[i].val(); j++) {
-            for (int k = 0; k < shape[i + 1].val(); k++, index++) {
-                line[index].startPos = (Vector2) {node[startSum + j].position};
-                line[index].endPos = (Vector2) {node[endSum + k].position};
-                line[index].value = LIGHTGRAY;
-            }
-        }
-        startSum += shape[i].val();
-    }
+    createLines(shownNetwork, line, node);
 
     Line divider = (Line) {
         (Vector2) {
@@ -109,8 +98,6 @@ int main(void)
     numberBase.y = screenHeight / 4;
     numberBase.width = screenWidth / 4;
     numberBase.height = screenHeight / 2;
-    MNumbers nums("res/t10k-images.idx3-ubyte", numberBase);
-    nums.load(0);
 
     Button button[2];
     button[0].p1 = (Vector2) { (screenWidth / 4) * 3 - 20, (screenHeight / 5) + 20 };
@@ -151,9 +138,7 @@ int main(void)
         //----------------------------------------------------------------------------------
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             if (nums.index != 0 && CheckCollisionPointRec( { GetMouseX(), GetMouseY() }, button[0].rect)) {
-                cout << "Button 0 pressed" << endl;
                 nums.loadPrev();
-                cout << "Index after load: " << nums.index << endl;
                 if (nums.index == 0) {
                     button[0].colorF = BROWN;
                 }
@@ -162,7 +147,6 @@ int main(void)
                 }
             }
             else if (nums.index != 59999 && CheckCollisionPointRec( { GetMouseX(), GetMouseY() }, button[1].rect)) {
-                cout << "Button 1 pressed" << endl;
                 nums.loadNext();
                 if (nums.index == 1) {
                     button[0].colorF = BEIGE;
@@ -184,7 +168,7 @@ int main(void)
                 DrawLineV(line[i].startPos, line[i].endPos, line[i].value);
             }
             DrawLineEx(divider.startPos, divider.endPos, divider.thickness, divider.value);
-            for (int i = 0; i < shape.sum(); i++) {
+            for (int i = 0; i < shownNetwork.shape().sum(); i++) {
                 DrawCircle(node[i].position.x, node[i].position.y, node[i].radius, node[i].value);
             }
 
@@ -212,4 +196,54 @@ int main(void)
 
 int min(int val1, int val2) {
     return val1 < val2 ? val1 : val2;
+}
+void createLines(const Network &n, Line *lines, Node *nodes) {
+    int startSum = 0, endSum = 0, index = 0;
+    for (int i = 0; i < n.shape().length() - 1; i++) {
+        endSum += n.shape()[i].val();
+        for (int j = 0; j < n.shape()[i].val(); j++) {
+            for (int k = 0; k < n.shape()[i + 1].val(); k++, index++) {
+                lines[index].startPos = (Vector2) {nodes[startSum + j].position};
+                lines[index].endPos = (Vector2) {nodes[endSum + k].position};
+                lines[index].value = LIGHTGRAY;
+            }
+        }
+        startSum += n.shape()[i].val();
+    }
+}
+
+void createNodes(const Network &n, Node *nodes, int networkWidth, int networkHeight) {
+    vector<MatrixL<float>> activations = n.getActivations();
+    int x_offset = networkWidth / (n.shape().length() + 1);
+    int y_offsets[n.shape().length()];
+    for (int i = 0; i < n.shape().length(); i++) {
+        y_offsets[i] = networkHeight / (n.shape()[i].val() + 1);
+    }
+    int index = 0;
+    for (int i = 0; i < n.shape().length(); ++i) {
+        for (int j = 1; j <= n.shape()[i].val(); j++, index++) {
+            nodes[index].position = (Vector2) { (i + 1) * x_offset, y_offsets[i] * j };
+            nodes[index].radius = (min(x_offset, y_offsets[i]) * 2) / 5;
+            nodes[index].value = activations[i].flatAt(index);
+        }
+    }
+}
+
+void createShownNetwork(const Network &sn, const Network &an, Line *lines, Node *nodes, int networkWidth, int networkHeight) {
+    nodes = new Node[shownNetwork.shape().sum()];
+    vector<MatrixL<float>> shownActivations = actualNetwork.getActivations();
+    for (int i = 0; i < sn.shape().length(); i++) {
+        if (shownActivations[i].length != sn.shape()[i]) {
+            shownActivations[i].reshape_in_place({sn.shape()[i]});
+        }
+    }
+    sn.setActivations(shownActivations);
+    createNodes(shownNetwork, node, networkWidth, networkHeight);
+
+    int lines = 0;
+    for (int i = 0; i < shownNetwork.shape().length() - 1; i++) {
+        lines += shownNetwork.shape()[i].val() * shownNetwork.shape()[i + 1].val();
+    }
+    Line line[lines];
+    createLines(shownNetwork, line, node);
 }
